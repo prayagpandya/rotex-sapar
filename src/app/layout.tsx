@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { QuoteModal } from "@/components/QuoteModal";
 import { QuoteProvider } from "@/components/QuoteModalContext";
 
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rotex Nonwoven Fabrics | PP Spunbond Fabric Rolls (10 - 200 GSM)",
+  title: "Rotex Nonwoven Fabric | PP Spunbond Fabric Rolls (10 - 200 GSM)",
   description:
     "Leading manufacturer and exporter of PP Spunbond Nonwoven Fabric Rolls in 10 to 200 GSM with 21+ colors. Certified for medical masks, agro crop cover, eco carry bags, and furniture upholstery.",
   keywords: [
@@ -32,13 +33,13 @@ export const metadata: Metadata = {
     "Prakash Patel Rotex",
     "10 to 200 GSM nonwoven rolls"
   ],
-  authors: [{ name: "Rotex Nonwoven Fabrics" }],
+  authors: [{ name: "Rotex Nonwoven Fabric" }],
   openGraph: {
-    title: "Rotex Nonwoven Fabrics | PP Spunbond Fabric Rolls",
+    title: "Rotex Nonwoven Fabric | PP Spunbond Fabric Rolls",
     description:
       "Precision PP Spunbond Nonwoven Fabric Rolls (10-200 GSM, 21 Colors). Direct factory pricing from directors Nirav Patel & Prakash Patel.",
     url: "https://rotexfab.com",
-    siteName: "Rotex Nonwoven Fabrics",
+    siteName: "Rotex Nonwoven Fabric",
     locale: "en_US",
     type: "website",
   },
@@ -69,6 +70,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <FloatingWhatsApp />
+          <ScrollToTop />
           <QuoteModal />
         </QuoteProvider>
       </body>

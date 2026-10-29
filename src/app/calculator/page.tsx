@@ -77,7 +77,7 @@ export default function CalculatorPage() {
                 </h3>
               </div>
             </div>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-200 font-semibold">
               For D-Cut, W-Cut &amp; Box Bag Fabric Converters
             </span>
           </div>
@@ -161,20 +161,20 @@ export default function CalculatorPage() {
 
             {/* Results */}
             <div className="lg:col-span-5 p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-700/80 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
                 Estimated Bag Output (Single Roll)
               </span>
 
               <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-slate-400 block">Estimated Bags / Roll</span>
+                  <span className="text-xs text-slate-200 block font-semibold">Estimated Bags / Roll</span>
                   <span className="text-3xl font-black text-amber-400">
                     ~{estimatedBagsPerRoll.toLocaleString()}
                   </span>
-                  <span className="text-xs text-slate-400 ml-1">bags (90% eff.)</span>
+                  <span className="text-xs text-slate-300 ml-1 font-semibold">bags (90% eff.)</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[11px] text-slate-400 block">Single Bag Weight</span>
+                  <span className="text-xs text-slate-200 block font-semibold">Single Bag Weight</span>
                   <span className="text-sm font-bold text-white">~{bagWeightGrams} g</span>
                 </div>
               </div>
@@ -209,12 +209,12 @@ export default function CalculatorPage() {
               <Layers className="w-4 h-4 text-sky-400" />
               <span>How Is Nonwoven Fabric Roll Weight Calculated?</span>
             </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-200 leading-relaxed font-medium">
               GSM stands for <strong className="text-slate-200">Grams per Square Meter</strong>. 
               Multiplying GSM by the roll width (in meters) and roll length (in meters) yields total grams, 
               which is divided by 1,000 to determine net kilograms.
             </p>
-            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-sky-300">
+            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono font-semibold text-sky-300">
               Formula: Weight (kg) = [GSM × Width(m) × Length(m)] / 1000
             </div>
           </div>
@@ -224,11 +224,11 @@ export default function CalculatorPage() {
               <Truck className="w-4 h-4 text-emerald-400" />
               <span>Container Logistics &amp; Payloads</span>
             </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-200 leading-relaxed font-medium">
               A standard 20-foot shipping container accommodates approximately <strong className="text-slate-200">5.5 to 6.5 Metric Tons</strong> of PP Spunbond rolls. 
               A 40-foot High Cube (HQ) container accommodates <strong className="text-slate-200">12.5 to 14.5 Metric Tons</strong> depending on roll diameter and GSM compression.
             </p>
-            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-emerald-300">
+            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono font-semibold text-emerald-300">
               Palletized or Loose Stuffed | Water-Proof Stretch Wrapped
             </div>
           </div>

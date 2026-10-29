@@ -28,16 +28,17 @@ export const productsData: ProductItem[] = [
   {
     id: "pp-spunbond-standard-rolls",
     slug: "pp-spunbond-standard-rolls",
-    name: "PP Spunbond Nonwoven Fabric Rolls (Standard)",
+    name: "PP Spunbond Nonwoven Fabric (Standard Rolls)",
     subtitle: "High-Tensile 100% Virgin Polypropylene Fabric Rolls for Universal Industrial Conversion",
     gsmRange: "10 GSM - 200 GSM",
     standardWidth: "1.60 Meters (Slitting down to 100mm available)",
     rollLengthRange: "200m - 1000m (Standard factory winding)",
-    image: "/images/products/p1.webp",
+    image: "/images/hero_spunbond_rolls.webp",
     gallery: [
-      "/images/products/p1.webp",
+      "/images/hero_spunbond_rolls.webp",
+      "/images/applications/product_portfolio_packaging_bags.webp",
       "/images/products/p2.webp",
-      "/images/products/p3.webp",
+      "/images/products/furniture_pocket_springs.jpg",
       "/images/spunbond_pattern_texture.webp"
     ],
     polymer: "100% Prime Virgin Polypropylene (PP Homopolymer)",
@@ -47,7 +48,7 @@ export const productsData: ProductItem[] = [
       "High longitudinal (MD) and transverse (CD) tensile ratio",
       "Non-toxic, hypoallergenic, and odorless",
       "100% recyclable thermoplastic polymer",
-      "Superior dye dispersion across 21+ non-woven fabric colors"
+      "Superior dye dispersion across 21+ nonwoven fabric colors"
     ],
     applications: [
       "General Packaging & Linings",
@@ -65,19 +66,19 @@ export const productsData: ProductItem[] = [
       meltingPoint: "165°C - 170°C"
     },
     highlightBadge: "Best Seller",
-    description: "Our core product line manufactured on high-speed Reifenhauser-style continuous filament extrusion beams. Engineered for maximum tear resistance, flawless ultrasonic welding, and high-speed automatic bag-making machines."
+    description: "Our core product line manufactured on high-speed continuous filament extrusion beams. Engineered for maximum tear resistance, flawless ultrasonic welding, and high-speed automatic bag-making machines."
   },
   {
     id: "medical-hygiene-nonwoven-rolls",
     slug: "medical-hygiene-nonwoven-rolls",
-    name: "Medical & Hygiene Grade Nonwoven Rolls",
+    name: "Medical & Hygiene Grade Nonwoven Fabric",
     subtitle: "Cleanroom Processed Hypoallergenic Spunbond Fabric for Healthcare PPE & Disposables",
     gsmRange: "10 GSM - 50 GSM",
     standardWidth: "1.60 Meters / Slit to 175mm, 195mm (Mask Size)",
     rollLengthRange: "500m - 1000m",
-    image: "/images/applications/medical_hygiene.webp",
+    image: "/images/products/medical_fabric_rolls.jpg",
     gallery: [
-      "/images/applications/medical_hygiene.webp",
+      "/images/products/medical_fabric_rolls.jpg",
       "/images/products/p2.webp",
       "/images/products/p6.webp",
       "/images/products/p10.webp"
@@ -107,7 +108,7 @@ export const productsData: ProductItem[] = [
       meltingPoint: "168°C"
     },
     highlightBadge: "Medical Certified",
-    description: "Formulated specifically for the healthcare sector. Manufactured in sanitized positive-pressure environments with bio-compatible non-woven fabrics in Medical Blue, Sea Green, and Optical White."
+    description: "Formulated specifically for the healthcare sector. Manufactured in sanitized positive-pressure environments with bio-compatible nonwoven fabrics in Medical Blue, Sea Green, and White."
   },
   {
     id: "agriculture-crop-cover-rolls",
@@ -117,16 +118,16 @@ export const productsData: ProductItem[] = [
     gsmRange: "15 GSM - 35 GSM",
     standardWidth: "1.60m, 3.20m (Ultrasonic Welded Joint Width)",
     rollLengthRange: "500m - 1000m",
-    image: "/images/applications/agriculture_cover.webp",
+    image: "/images/products/agrofleece_crop_cover.jpg",
     gallery: [
-      "/images/applications/agriculture_cover.webp",
+      "/images/products/agrofleece_crop_cover.jpg",
       "/images/products/p4.webp",
       "/images/products/p10.webp"
     ],
     polymer: "UV-Stabilized PP Copolymer with HALS Additives",
     bondingType: "Open-Pore High-Porosity Calender",
     keyFeatures: [
-      "1% - 3% UV Non-woven Fabric stabilizer addition for 12-24 months outdoor lifespan",
+      "1% - 3% UV Nonwoven Fabric stabilizer addition for 12-24 months outdoor lifespan",
       "Optimal light transmission (85%+) for photosynthesis",
       "Permeable to air, water, and spray nutrients",
       "Creates thermal microclimate preventing frost and wind damage",
@@ -153,15 +154,14 @@ export const productsData: ProductItem[] = [
   {
     id: "packaging-carry-bag-nonwoven",
     slug: "packaging-carry-bag-nonwoven",
-    name: "Nonwoven Shopping Bag & Packaging Fabric Rolls",
-    subtitle: "Vibrant Color Non-woven Fabric Spunbond Rolls for D-Cut, Loop Handle, and Box Bags",
+    name: "Nonwoven Fabric for Packaging & Shopping Bag",
+    subtitle: "Solid Nonwoven Fabric Spunbond Rolls for Box Bags, U-Cut, D-Cut, and Loop Handle Bags",
     gsmRange: "40 GSM - 120 GSM",
     standardWidth: "1.60 Meters (Custom Slitting on Request)",
     rollLengthRange: "200m - 500m",
-    image: "/images/applications/packaging_bags.webp",
+    image: "/images/applications/product_portfolio_packaging_bags.webp",
     gallery: [
-      "/images/applications/packaging_bags.webp",
-      "/images/products/p1.webp",
+      "/images/applications/product_portfolio_packaging_bags.webp",
       "/images/products/p7.webp",
       "/images/products/p11.webp",
       "/images/products/p14.webp"
@@ -173,14 +173,14 @@ export const productsData: ProductItem[] = [
       "Optimized for flexographic, screen, and rotogravure printing",
       "Clean ultrasonic slitting and seam welding without fraying",
       "Eco-friendly reusable alternative to single-use plastics",
-      "21 standard rich colors in stock for prompt dispatch"
+      "21 standard solid colors in stock for prompt dispatch"
     ],
     applications: [
-      "D-Cut & W-Cut Supermarket Grocery Shopping Bags",
+      "Box Bags & Stitched Shopping Bags",
+      "U-Cut & D-Cut Supermarket Grocery Shopping Bags",
       "Loop Handle Luxury Brand Retail Sacks",
-      "Stitched Box Bags & Nonwoven Garment Wardrobe Covers",
-      "Apparel Shoebox Liners & Dust Pouches",
-      "Corporate Exhibition Promotional Totes"
+      "Rice, Wheat, Spices & Split Pulses Sacks",
+      "Stitched Box Bags & Nonwoven Garment Wardrobe Covers"
     ],
     technicalSpecs: {
       tensileStrengthMD: ">= 75 N / 5cm (at 60 GSM)",
@@ -196,15 +196,14 @@ export const productsData: ProductItem[] = [
   {
     id: "furniture-mattress-upholstery-rolls",
     slug: "furniture-mattress-upholstery-rolls",
-    name: "Furniture, Mattress & Pocket Spring Fabric Rolls",
+    name: "Furniture, Mattress & Pocket Spring Fabric",
     subtitle: "High-Resilience Nonwoven Liners, Dust Covers, and Pocket Coil Sleeves for Bedding",
     gsmRange: "50 GSM - 160 GSM",
     standardWidth: "1.60 Meters & Custom Slit Rolls",
     rollLengthRange: "200m - 400m",
-    image: "/images/applications/furniture_mattress.webp",
+    image: "/images/products/furniture_pocket_springs.jpg",
     gallery: [
-      "/images/applications/furniture_mattress.webp",
-      "/images/products/p3.webp",
+      "/images/products/furniture_pocket_springs.jpg",
       "/images/products/p8.webp",
       "/images/products/p12.webp"
     ],
@@ -215,7 +214,7 @@ export const productsData: ProductItem[] = [
       "Acoustic noise dampening prevents metal-on-metal spring squeaks",
       "Breathable structure inhibits moisture buildup and dust mites",
       "Easy stapling, cutting, and stitching for sofa carpentry",
-      "Deep Jet Black and Pure White shades in steady supply"
+      "Black and White shades in steady supply"
     ],
     applications: [
       "Individually Wrapped Pocket Spring Coil Encasements",
@@ -238,14 +237,15 @@ export const productsData: ProductItem[] = [
   {
     id: "hydrophilic-absorbent-nonwoven-rolls",
     slug: "hydrophilic-absorbent-nonwoven-rolls",
-    name: "Hydrophilic Fast-Absorbing Nonwoven Rolls",
+    name: "Hydrophilic Fast-Absorbing Nonwoven Fabric",
     subtitle: "Surfactant-Treated Spunbond Rolls for Instant Liquid Absorption & Moisture Strike-Through",
     gsmRange: "10 GSM - 40 GSM",
     standardWidth: "1.60 Meters (Custom slitting available)",
     rollLengthRange: "500m - 1000m",
-    image: "/images/products/p5.webp",
+    image: "/images/products/hydrophilic_water_drops.jpg",
     gallery: [
-      "/images/products/p5.webp",
+      "/images/products/hydrophilic_water_drops.jpg",
+      "/images/products/p2.webp",
       "/images/products/p9.webp",
       "/images/products/p13.webp"
     ],
@@ -274,6 +274,6 @@ export const productsData: ProductItem[] = [
       meltingPoint: "165°C"
     },
     highlightBadge: "High Absorption",
-    description: "While standard polypropylene is naturally water-repellent, our Hydrophilic Spunbond undergoes an advanced inline surfactant treatment that transforms the surface into a rapid fluid-wicking membrane."
+    description: "While standard polypropylene is naturally water-repellent, our Hydrophilic Spunbond undergoes an advanced inline surfactant treatment that transforms the surface into a rapid fluid-wicking membrane with clear droplet absorption."
   }
 ];

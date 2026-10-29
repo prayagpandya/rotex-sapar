@@ -24,6 +24,19 @@ interface CachedTextures {
   smoothBump: THREE.CanvasTexture;
 }
 
+function isWebGLAvailable(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function Product3DViewer({
   colorHex,
   colorName,
@@ -35,6 +48,7 @@ export function Product3DViewer({
   const [internalPattern, setInternalPattern] = useState<FabricPatternType>(pattern || "diamond");
   const [isAutoRotate, setIsAutoRotate] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [hasWebGL, setHasWebGL] = useState<boolean>(true);
 
   const activePattern = pattern !== undefined ? pattern : internalPattern;
 
@@ -411,6 +425,12 @@ export function Product3DViewer({
     const container = mountRef.current;
     if (!container) return;
 
+    if (!isWebGLAvailable()) {
+      setHasWebGL(false);
+      setIsLoaded(true);
+      return;
+    }
+
     fabricMaterialsRef.current = [];
 
     // Scene
@@ -421,15 +441,22 @@ export function Product3DViewer({
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 340;
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(3.4, 1.9, 3.8);
+    camera.position.set(3.1, 1.7, 3.5);
     cameraRef.current = camera;
 
     // Renderer with antialias and alpha
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance"
-    });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
+    } catch {
+      setHasWebGL(false);
+      setIsLoaded(true);
+      return;
+    }
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
@@ -593,7 +620,7 @@ export function Product3DViewer({
 
   const handleResetView = () => {
     if (cameraRef.current && controlsRef.current) {
-      cameraRef.current.position.set(3.4, 1.9, 3.8);
+      cameraRef.current.position.set(3.1, 1.7, 3.5);
       controlsRef.current.target.set(0, 0, 0);
       controlsRef.current.update();
     }
@@ -648,7 +675,7 @@ export function Product3DViewer({
 
       {/* Pattern Selector Floating Pill Bar */}
       <div className="absolute top-12 left-2.5 sm:left-3 z-10 flex items-center gap-1 p-1 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xs pointer-events-auto">
-        <span className="text-[10px] font-bold text-slate-500 px-1.5 uppercase tracking-wider hidden xs:inline">
+        <span className="text-xs font-bold text-slate-700 px-1.5 uppercase tracking-wider hidden xs:inline">
           Texture:
         </span>
         <button
@@ -677,17 +704,42 @@ export function Product3DViewer({
         </button>
       </div>
 
-      {/* WebGL Canvas Container */}
-      <div
-        ref={mountRef}
-        className="w-full h-56 sm:h-64 md:h-80 cursor-grab active:cursor-grabbing touch-none"
-        title="Click and drag to rotate in 360°. Scroll or use +/- to zoom."
-      />
+      {/* WebGL Canvas Container or 2D Graceful Fallback */}
+      {hasWebGL ? (
+        <div
+          ref={mountRef}
+          className="w-full h-[340px] xs:h-[370px] sm:h-[400px] md:h-[450px] lg:h-[470px] cursor-grab active:cursor-grabbing touch-none"
+          title="Click and drag to rotate in 360°. Scroll or use +/- to zoom."
+        />
+      ) : (
+        <div className="w-full h-[340px] xs:h-[370px] sm:h-[400px] md:h-[450px] lg:h-[470px] flex flex-col items-center justify-center p-6 text-center bg-slate-100 rounded-2xl relative overflow-hidden">
+          <div
+            className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl shadow-xl flex items-center justify-center relative overflow-hidden border border-slate-300 transition-colors duration-300"
+            style={{ backgroundColor: colorHex }}
+          >
+            {activePattern === "diamond" && (
+              <div
+                className="absolute inset-0 opacity-25"
+                style={{
+                  backgroundImage: "radial-gradient(circle at 50% 50%, #000 1.5px, transparent 1.5px)",
+                  backgroundSize: "14px 14px"
+                }}
+              />
+            )}
+            <div className="relative z-10 px-4 py-2 rounded-xl bg-white/95 backdrop-blur-xs text-xs font-bold text-slate-900 shadow-md">
+              {colorName}
+            </div>
+          </div>
+          <p className="text-sm text-slate-800 mt-4 max-w-xs font-semibold">
+            WebGL is unavailable in your browser environment. Displaying 2D fabric shade preview.
+          </p>
+        </div>
+      )}
 
       {/* Loading Skeleton */}
-      {!isLoaded && (
+      {!isLoaded && hasWebGL && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
-          <div className="flex items-center space-x-2 text-xs font-bold text-slate-500">
+          <div className="flex items-center space-x-2 text-xs font-bold text-slate-700">
             <RotateCw className="w-4 h-4 animate-spin text-sky-600" />
             <span>Loading 3D Fabric Roll...</span>
           </div>
@@ -706,52 +758,54 @@ export function Product3DViewer({
             <span className="text-[11px] font-black text-slate-900 block truncate">
               {colorName}
             </span>
-            <span className="text-[9px] text-slate-500 font-mono truncate block">
-              {colorCode} • {activePattern === "diamond" ? "Diamond Cut" : "Smooth"}
+            <span className="text-xs text-slate-700 font-semibold truncate block">
+              {activePattern === "diamond" ? "Diamond Cut Pattern" : "Smooth Finish"}
             </span>
           </div>
         </div>
 
-        {/* Quick 3D Tool Controls with Zoom +/- & Reset */}
-        <div className="flex items-center space-x-1.5 pointer-events-auto shrink-0">
-          <button
-            type="button"
-            onClick={handleZoomIn}
-            className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-700 shadow-xs transition-colors cursor-pointer text-[10px] font-bold"
-            title="Zoom In (Close-up Macro View)"
-          >
-            <ZoomIn className="w-3.5 h-3.5 text-slate-700" />
-          </button>
-          <button
-            type="button"
-            onClick={handleZoomOut}
-            className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-700 shadow-xs transition-colors cursor-pointer text-[10px] font-bold"
-            title="Zoom Out"
-          >
-            <ZoomOut className="w-3.5 h-3.5 text-slate-700" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setIsAutoRotate((prev) => !prev)}
-            className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-700 shadow-xs transition-colors cursor-pointer text-[10px] font-bold flex items-center space-x-1"
-            title={isAutoRotate ? "Pause Auto Rotation" : "Start Auto Rotation"}
-          >
-            {isAutoRotate ? <Pause className="w-3.5 h-3.5 text-sky-600" /> : <Play className="w-3.5 h-3.5 text-emerald-600" />}
-          </button>
-          <button
-            type="button"
-            onClick={handleResetView}
-            className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-700 shadow-xs transition-colors cursor-pointer text-[10px] font-bold"
-            title="Reset 3D Angle & Zoom"
-          >
-            <RefreshCw className="w-3.5 h-3.5 text-slate-600" />
-          </button>
-        </div>
+        {/* Quick 3D Tool Controls with Zoom +/- & Reset (Only when WebGL active) */}
+        {hasWebGL && (
+          <div className="flex items-center space-x-1.5 pointer-events-auto shrink-0">
+            <button
+              type="button"
+              onClick={handleZoomIn}
+              className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-900 shadow-xs transition-colors cursor-pointer text-xs font-bold"
+              title="Zoom In (Close-up Macro View)"
+            >
+              <ZoomIn className="w-3.5 h-3.5 text-slate-700" />
+            </button>
+            <button
+              type="button"
+              onClick={handleZoomOut}
+              className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-900 shadow-xs transition-colors cursor-pointer text-xs font-bold"
+              title="Zoom Out"
+            >
+              <ZoomOut className="w-3.5 h-3.5 text-slate-700" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsAutoRotate((prev) => !prev)}
+              className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-900 shadow-xs transition-colors cursor-pointer text-xs font-bold flex items-center space-x-1"
+              title={isAutoRotate ? "Pause Auto Rotation" : "Start Auto Rotation"}
+            >
+              {isAutoRotate ? <Pause className="w-3.5 h-3.5 text-sky-600" /> : <Play className="w-3.5 h-3.5 text-emerald-600" />}
+            </button>
+            <button
+              type="button"
+              onClick={handleResetView}
+              className="p-1.5 rounded-lg bg-white/95 hover:bg-slate-100 backdrop-blur-md border border-slate-200 text-slate-900 shadow-xs transition-colors cursor-pointer text-xs font-bold"
+              title="Reset 3D Angle & Zoom"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-slate-600" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Drag & Macro Zoom Hint Overlay */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-65 hover:opacity-100 transition-opacity whitespace-nowrap">
-        <span className="text-[10px] font-medium text-slate-600 bg-white/90 px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs backdrop-blur-xs">
+        <span className="text-xs font-semibold text-slate-800 bg-white/95 px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs backdrop-blur-xs">
           Drag to orbit 360° • Zoom in for macro diamond detail
         </span>
       </div>

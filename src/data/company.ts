@@ -14,12 +14,22 @@ export const companyData = {
   name: "Rotex Fabric Pvt. Ltd.",
   legalName: "Rotex Fabric Pvt. Ltd.",
   shortName: "Rotex Fabric",
-  tagline: "Precision Engineered PP Spunbond Nonwoven Fabric Rolls",
+  tagline: "Precision Engineered PP Spunbond Nonwoven Fabric",
   established: "2012",
   email: "rotexfab@yahoo.com",
   inquiryEmail: "rotexfab@yahoo.com",
   website: "www.rotexfabric.com",
-  officeHours: "Monday - Saturday: 9:00 AM - 7:30 PM IST",
+  gstin: "24AAECR5787J1ZW",
+  officeHours: "Thursday – Tuesday: 10:00 AM – 7:00 PM | Wednesday: Closed (Holiday)",
+  weeklySchedule: [
+    { day: "Sunday", hours: "10:00 AM – 7:00 PM", isHoliday: false },
+    { day: "Monday", hours: "10:00 AM – 7:00 PM", isHoliday: false },
+    { day: "Tuesday", hours: "10:00 AM – 7:00 PM", isHoliday: false },
+    { day: "Wednesday", hours: "Closed / Holiday", isHoliday: true },
+    { day: "Thursday", hours: "10:00 AM – 7:00 PM", isHoliday: false },
+    { day: "Friday", hours: "10:00 AM – 7:00 PM", isHoliday: false },
+    { day: "Saturday", hours: "10:00 AM – 7:00 PM", isHoliday: false }
+  ],
   address: {
     surveyNo: "Survey No.275/1/P",
     plotNo: "Plot No.22/23",
@@ -31,43 +41,43 @@ export const companyData = {
     state: "Gujarat",
     country: "India",
     pinCode: "360024",
-    plant: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot, Gujarat",
-    displayAddress: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot, Gujarat"
+    gstin: "24AAECR5787J1ZW",
+    plant: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat.",
+    displayAddress: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat."
   },
   directors: [
     {
       name: "Nirav Patel",
-      role: "Director - Commercial & Technical Sales",
+      role: "Director",
       phone: "+919925195928",
-      displayPhone: "+91 99251 95928",
+      displayPhone: "09925195928",
       whatsappNumber: "919925195928",
-      whatsappMessage: "Hello Nirav Patel, I am interested in Rotex PP Spunbond Nonwoven Fabric Rolls. Please share quotation and technical specifications.",
+      whatsappMessage: "Hello Nirav Patel,\n\nI am interested in Rotex PP Spunbond Nonwoven Fabric.\n\nPlease share the available GSM options, colours, pricing, and sample availability.\n\nThank you.",
       email: "rotexfab@yahoo.com",
       avatarText: "NP",
       bio: "Over 15+ years of expertise in polymer extrusion, industrial spunbond formulation, and commercial distribution across domestic & international markets."
     },
     {
       name: "Prakash Patel",
-      role: "Director - Operations & Plant Production",
+      role: "Director",
       phone: "+919925195930",
-      displayPhone: "+91 99251 95930",
+      displayPhone: "09925195930",
       whatsappNumber: "919925195930",
-      whatsappMessage: "Hello Prakash Patel, I would like to inquire about bulk manufacturing capacity, custom GSM slitting, and delivery schedules for PP Nonwoven Rolls.",
+      whatsappMessage: "Hello Prakash Patel,\n\nI am interested in Rotex PP Spunbond Nonwoven Fabric.\n\nPlease share the available GSM options, colours, pricing, and sample availability.\n\nThank you.",
       email: "rotexfab@yahoo.com",
       avatarText: "PP",
-      bio: "Leading state-of-the-art automated spunbond extrusion lines, quality laboratory adherence, and multi-shift capacity management."
+      bio: "Overseeing executive management, national & export marketing, business growth, and quality-driven nonwoven extrusion operations."
     }
   ] as DirectorContact[],
   stats: [
     { label: "Annual Extrusion Capacity", value: "18,000+", unit: "Metric Tons" },
     { label: "GSM Spectrum", value: "10 - 200", unit: "GSM Range" },
     { label: "Standard Production Width", value: "1.6", unit: "Meters (Custom Slit)" },
-    { label: "Standard Vibrant Colors", value: "21+", unit: "Non-woven Fabric Shades" },
+    { label: "Standard Colors", value: "21+", unit: "Nonwoven Fabric Shades" },
     { label: "Quality Conformity", value: "100%", unit: "Virgin Polypropylene" },
     { label: "Global Clients Served", value: "450+", unit: "B2B Partners" }
   ],
   certifications: [
-    "ISO 9001:2015 Certified Manufacturing",
     "OEKO-TEX Standard 100 Compliant",
     "REACH & RoHS Compliant Additives",
     "Food & Medical Contact Safety Evaluated",

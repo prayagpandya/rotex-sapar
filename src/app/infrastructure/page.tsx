@@ -30,7 +30,7 @@ export default function InfrastructurePage() {
     },
     {
       title: "Spectrophotometer Color Chromaticity (Delta E)",
-      desc: "Digital colorimeter verification ensuring zero batch-to-batch shade deviation across all 21 standard non-woven fabric shades."
+      desc: "Digital colorimeter verification ensuring zero batch-to-batch shade deviation across all 21 standard nonwoven fabric shades."
     },
     {
       title: "Thermal Shrinkage & Calender Bond Integrity",
@@ -135,7 +135,7 @@ export default function InfrastructurePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 p-2.5 rounded-xl bg-white/95 text-xs text-slate-900 shadow-sm border border-slate-200">
                 <span className="font-bold block">ASTM &amp; ISO Testing Protocol</span>
-                <span className="text-[10px] text-slate-500">Calibrated Electronic Metrology</span>
+                <span className="text-xs text-slate-700 font-semibold">Calibrated Electronic Metrology</span>
               </div>
             </div>
 
@@ -164,7 +164,7 @@ export default function InfrastructurePage() {
                       </span>
                       <span>{step.title}</span>
                     </h4>
-                    <p className="text-[11px] text-slate-600 pl-7 leading-relaxed">
+                    <p className="text-xs text-slate-800 pl-7 leading-relaxed font-medium">
                       {step.desc}
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export default function InfrastructurePage() {
               <Layers className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Custom Slitting &amp; Rewinding</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
               Equipped with high-precision razor and shear rotary knives. Slit widths available from 100mm upwards, ideal for mask earloops, mask bodies, and tape reinforcement.
             </p>
           </div>
@@ -194,7 +194,7 @@ export default function InfrastructurePage() {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Moisture-Proof Packaging</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
               Every roll is wrapped in high-micron transparent protective film with plastic end caps to prevent dust infiltration, edge impact damage, or humidity contamination during transit.
             </p>
           </div>
@@ -204,7 +204,7 @@ export default function InfrastructurePage() {
               <Truck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Rapid Nationwide &amp; Export Dispatch</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
               Located adjacent to major express highway corridors and western container ports (Mundra, Nhava Sheva). Full truckload dispatches ready within 24-48 hours for standard colors.
             </p>
           </div>

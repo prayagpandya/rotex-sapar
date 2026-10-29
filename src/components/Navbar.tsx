@@ -85,15 +85,29 @@ export function Navbar() {
               <span>{companyData.email}</span>
             </a>
             <span className="text-slate-700">|</span>
-            <a
-              href={`https://wa.me/${companyData.directors[0].whatsappNumber}?text=Hi%20Rotex%2C%20I%20am%20interested%20in%20PP%20Nonwoven%20Fabric%20Rolls.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1.5 text-[#25D366] hover:text-emerald-400 transition-colors font-semibold"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-              <span>WhatsApp Direct</span>
-            </a>
+            <div className="flex items-center space-x-3">
+              <a
+                href={`https://wa.me/${companyData.directors[0].whatsappNumber}?text=Hi%20Nirav%20Patel%2C%20I%20am%20interested%20in%20Rotex%20PP%20Nonwoven%20Fabric%20Rolls.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1.5 text-[#25D366] hover:text-emerald-400 transition-colors font-semibold"
+                title="WhatsApp Nirav Patel"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>Nirav Patel</span>
+              </a>
+              <span className="text-slate-700">|</span>
+              <a
+                href={`https://wa.me/${companyData.directors[1].whatsappNumber}?text=Hi%20Prakash%20Patel%2C%20I%20am%20interested%20in%20Rotex%20PP%20Nonwoven%20Fabric%20Rolls.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1.5 text-[#25D366] hover:text-emerald-400 transition-colors font-semibold"
+                title="WhatsApp Prakash Patel"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>Prakash Patel</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -108,18 +122,21 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Transparent High-Res Logo (Prominent & Sized Up) */}
-            <Link href="/" className="flex items-center space-x-3 group py-1">
-              <div className="relative h-12 sm:h-14 w-44 sm:w-52 flex items-center">
+            {/* Logo and Brand Name in Single Line */}
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group py-1 focus:outline-none shrink-0">
+              <div className="relative h-7 xs:h-8 sm:h-10 md:h-11 w-18 xs:w-22 sm:w-28 md:w-32 shrink-0 flex items-center">
                 <Image
                   src="/images/branding/logo.webp"
-                  alt="Rotex Nonwoven Fabrics Logo"
+                  alt="Rotex Fabric Logo"
                   fill
                   priority
-                  sizes="(max-width: 640px) 176px, 208px"
+                  sizes="(max-width: 640px) 88px, (max-width: 768px) 112px, 128px"
                   className="object-contain object-left transform group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
+              <span className="text-[10px] xs:text-[11px] sm:text-xs md:text-sm lg:text-[15px] font-black tracking-tight sm:tracking-wider text-orange-600 uppercase whitespace-nowrap group-hover:text-orange-500 transition-colors leading-none">
+                ROTEX FABRIC PVT. LTD.
+              </span>
             </Link>
 
             {/* Desktop Navigation Links */}
@@ -161,19 +178,19 @@ export function Navbar() {
             </div>
 
             {/* Mobile Hamburger Button */}
-            <div className="flex lg:hidden items-center space-x-2">
+            <div className="flex lg:hidden items-center space-x-1.5 sm:space-x-2 shrink-0">
               <Link
                 href="/contact"
-                className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-sky-600 to-red-600 sm:hidden shadow-sm"
+                className="px-2.5 py-1.5 rounded-xl text-[11px] font-bold text-white bg-gradient-to-r from-sky-600 to-red-600 hidden xs:inline-flex sm:hidden shadow-sm"
               >
                 Contact
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                className="p-1.5 sm:p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none cursor-pointer"
                 aria-label="Toggle Navigation Menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
               </button>
             </div>
           </div>
@@ -225,16 +242,16 @@ export function Navbar() {
                     className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-slate-700 hover:text-sky-700 text-center"
                   >
                     <Phone className="w-4 h-4 text-sky-600 mb-1" />
-                    <span className="font-bold text-[11px]">Nirav Patel</span>
-                    <span className="text-[10px] text-slate-500">9925195928</span>
+                    <span className="font-bold text-xs text-slate-900">Nirav Patel</span>
+                    <span className="text-xs font-semibold text-slate-700">9925195928</span>
                   </a>
                   <a
                     href={`tel:${companyData.directors[1].phone}`}
                     className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-slate-700 hover:text-sky-700 text-center"
                   >
                     <Phone className="w-4 h-4 text-sky-600 mb-1" />
-                    <span className="font-bold text-[11px]">Prakash Patel</span>
-                    <span className="text-[10px] text-slate-500">9925195930</span>
+                    <span className="font-bold text-xs text-slate-900">Prakash Patel</span>
+                    <span className="text-xs font-semibold text-slate-700">9925195930</span>
                   </a>
                 </div>
               </div>

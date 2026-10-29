@@ -7,7 +7,6 @@ import {
   Mail, 
   MapPin, 
   Clock, 
-  Send, 
   CheckCircle2, 
   Sparkles, 
   ChevronDown, 
@@ -46,11 +45,12 @@ export default function ContactPage() {
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [productType, setProductType] = useState("PP Spunbond Standard Rolls");
-  const [gsm, setGsm] = useState("70");
-  const [color, setColor] = useState("WHITE");
+  const [productType, setProductType] = useState("PP Spunbond Standard Fabric");
+  const [gsm, setGsm] = useState("60-100");
+  const [color, setColor] = useState("White");
   const [quantity, setQuantity] = useState("1000 kg (1 Metric Ton)");
   const [message, setMessage] = useState("");
+  const [selectedDirector, setSelectedDirector] = useState<string>("Nirav Patel");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
@@ -81,30 +81,32 @@ export default function ContactPage() {
         return res.message;
       }
     }
-    if (field === "email") {
-      if (value.trim() && !EMAIL_REGEX.test(value.trim())) {
-        return "Please enter a valid email address (e.g. buyer@company.com).";
+    if (field === "company") {
+      if (!value.trim()) return "Company / Business Name is required.";
+      if (!COMPANY_REGEX.test(value.trim())) {
+        return "Please enter a valid business/company name.";
       }
     }
-    if (field === "company") {
-      if (value.trim() && !COMPANY_REGEX.test(value.trim())) {
-        return "Please enter a valid business/company name.";
+    if (field === "email") {
+      if (!value.trim()) return "Email address is required.";
+      if (!EMAIL_REGEX.test(value.trim())) {
+        return "Please enter a valid email address (e.g. buyer@company.com).";
       }
     }
     return undefined;
   };
 
-  const generateCombinedMessage = () => {
+  const generateCombinedMessage = (directorName: string) => {
     const cleanPhone = phone.trim() ? `+91 ${phone.trim()}` : "Not Provided";
     const cleanName = fullName.trim();
-    const cleanCompany = company.trim() || "Individual / Not Specified";
-    const cleanEmail = email.trim() || "Not Provided";
+    const cleanCompany = company.trim();
+    const cleanEmail = email.trim();
     const cleanNotes = message.trim() || "Please provide best wholesale factory pricing, roll delivery schedule, and sample availability.";
 
     return (
-      `*NEW INQUIRY - ROTEX NONWOVEN FABRICS*\n` +
+      `*NEW INQUIRY FOR ${directorName.toUpperCase()} - ROTEX FABRIC*\n` +
       `----------------------------------------\n` +
-      `*Name:* ${cleanName}\n` +
+      `*Buyer Name:* ${cleanName}\n` +
       `*Company:* ${cleanCompany}\n` +
       `*Mobile / WhatsApp:* ${cleanPhone}\n` +
       `*Email:* ${cleanEmail}\n\n` +
@@ -114,43 +116,38 @@ export default function ContactPage() {
       `*Estimated Quantity:* ${quantity}\n\n` +
       `*Application / Notes:*\n${cleanNotes}\n` +
       `----------------------------------------\n` +
-      `_Inquiry submitted via Rotex Nonwoven Website Contact Desk_`
+      `_Inquiry submitted via Rotex Fabric Website Contact Desk_`
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSendInquiry = (directorPhone: string, directorName: string) => {
     const nameErr = validateField("fullName", fullName);
     const phoneErr = validateField("phone", phone);
-    const emailErr = validateField("email", email);
     const companyErr = validateField("company", company);
+    const emailErr = validateField("email", email);
 
     const validationErrors: typeof errors = {};
     if (nameErr) validationErrors.fullName = nameErr;
     if (phoneErr) validationErrors.phone = phoneErr;
-    if (emailErr) validationErrors.email = emailErr;
     if (companyErr) validationErrors.company = companyErr;
+    if (emailErr) validationErrors.email = emailErr;
 
     setErrors(validationErrors);
-    setTouched({ fullName: true, phone: true, email: true, company: true });
+    setTouched({ fullName: true, phone: true, company: true, email: true });
 
     if (Object.keys(validationErrors).length > 0) {
       return;
     }
 
-    // Combine all form values into structured WhatsApp message
-    const combinedMessage = generateCombinedMessage();
+    const combinedMessage = generateCombinedMessage(directorName);
     const encodedMessage = encodeURIComponent(combinedMessage);
+    const whatsappUrl = `https://wa.me/${directorPhone}?text=${encodedMessage}`;
 
-    // Primary Director WhatsApp link (Nirav Patel: +91 99251 95928)
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=919925195928&text=${encodedMessage}`;
-
-    // Automatically open WhatsApp with pre-composed text
     if (typeof window !== "undefined") {
       window.open(whatsappUrl, "_blank");
     }
 
+    setSelectedDirector(directorName);
     setIsSubmitted(true);
     try {
       confetti({
@@ -173,10 +170,10 @@ export default function ContactPage() {
           <span>Direct Contact &amp; Inquiry</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-          Connect with Rotex Nonwoven
+          Connect with Rotex Fabric
         </h1>
-        <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Request wholesale fabric roll pricing, schedule plant audits, or order sample swatch books. 
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
+          Request wholesale fabric pricing, schedule plant audits, or order physical sample swatches. 
           Connect directly with our Directors Nirav Patel &amp; Prakash Patel.
         </p>
       </AnimatedSection>
@@ -198,20 +195,20 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900">Nirav Patel</h3>
-                    <p className="text-xs text-sky-700 font-bold">Director - Commercial &amp; Sales</p>
-                    <p className="text-[11px] text-slate-500">Rotex Nonwoven Fabrics</p>
+                    <p className="text-xs text-sky-700 font-bold">Director</p>
+                    <p className="text-xs text-slate-800 font-semibold">Rotex Fabric Pvt. Ltd.</p>
                   </div>
                 </div>
 
                 <div className="space-y-2 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Phone / WhatsApp:</span>
+                    <span className="text-slate-600 font-medium">Phone / WhatsApp:</span>
                     <a href="tel:+919925195928" className="font-bold text-slate-900 hover:text-sky-700">
                       +91 99251 95928
                     </a>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Email:</span>
+                    <span className="text-slate-600 font-medium">Email:</span>
                     <a href={`mailto:${companyData.email}`} className="text-sky-700 hover:underline font-bold">
                       {companyData.email}
                     </a>
@@ -246,20 +243,20 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900">Prakash Patel</h3>
-                    <p className="text-xs text-sky-700 font-bold">Director - Operations &amp; Production</p>
-                    <p className="text-[11px] text-slate-500">Rotex Nonwoven Fabrics</p>
+                    <p className="text-xs text-sky-700 font-bold">Director</p>
+                    <p className="text-xs text-slate-800 font-semibold">Rotex Fabric Pvt. Ltd.</p>
                   </div>
                 </div>
 
                 <div className="space-y-2 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Phone / WhatsApp:</span>
+                    <span className="text-slate-600 font-medium">Phone / WhatsApp:</span>
                     <a href="tel:+919925195930" className="font-bold text-slate-900 hover:text-sky-700">
                       +91 99251 95930
                     </a>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Email:</span>
+                    <span className="text-slate-600 font-medium">Email:</span>
                     <a href={`mailto:${companyData.email}`} className="text-sky-700 hover:underline font-bold">
                       {companyData.email}
                     </a>
@@ -287,29 +284,49 @@ export default function ContactPage() {
               </div>
 
               {/* Plant Location & Operating Hours */}
-              <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4 text-xs text-slate-600">
+              <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4 text-xs text-slate-700">
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    <span className="font-bold text-slate-900 block text-xs">Rotex Fabric Pvt. Ltd. (Factory Address):</span>
-                    <p className="text-[11px] text-slate-700 leading-relaxed font-medium">
+                    <span className="font-bold text-slate-950 block text-xs">Rotex Fabric Pvt. Ltd.:</span>
+                    <p className="text-xs text-slate-900 leading-relaxed font-medium">
                       Survey No. 275/1/P, Plot No. 22/23,<br />
                       Gujarat Alloy Cast Gate, Shapar Main Road,<br />
                       At :- Shapar (Veraval) 360024.<br />
-                      Tal :- Kotda Sangani, Dist :- Rajkot, Gujarat.
+                      Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat.
                     </p>
-                    <div className="pt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-600 border-t border-slate-100">
+                    <div className="pt-2 flex flex-col gap-1 text-xs text-slate-900 border-t border-slate-100 font-medium">
+                      <span><strong>GSTIN:</strong> 24AAECR5787J1ZW</span>
                       <span><strong>Web:</strong> <a href="https://www.rotexfabric.com" target="_blank" rel="noopener noreferrer" className="text-sky-700 hover:underline">www.rotexfabric.com</a></span>
                       <span><strong>Email:</strong> <a href={`mailto:${companyData.email}`} className="text-sky-700 hover:underline">{companyData.email}</a></span>
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3 pt-1 border-t border-slate-100">
-                  <Clock className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-slate-900 block">Plant &amp; Office Hours:</span>
-                    <span>{companyData.officeHours}</span>
+
+                {/* Structured Weekly Schedule with Wednesday Holiday highlighted */}
+                <div className="pt-3 border-t border-slate-100 space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4 text-sky-600 shrink-0" />
+                    <span className="font-bold text-slate-900 text-xs">Office &amp; Factory Hours:</span>
                   </div>
+                  <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-2.5 space-y-1 text-xs">
+                    {companyData.weeklySchedule.map((item) => (
+                      <div
+                        key={item.day}
+                        className={`flex items-center justify-between py-0.5 px-2 rounded ${
+                          item.isHoliday ? "bg-red-50 text-red-700 font-semibold" : "text-slate-800"
+                        }`}
+                      >
+                        <span className="font-medium">{item.day}</span>
+                        <span className={item.isHoliday ? "font-bold text-red-600" : "font-mono font-medium"}>
+                          {item.hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-slate-700 italic">
+                    Wednesday is a weekly plant holiday. Inquiries submitted on Wednesday are attended to promptly on Thursday morning.
+                  </p>
                 </div>
               </div>
             </div>
@@ -330,14 +347,14 @@ export default function ContactPage() {
                   <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
                     Send an Inquiry to Rotex
                   </h2>
-                  <p className="text-xs text-slate-500 mt-1 mb-6">
-                    Fill out your desired specifications or questions. Our directors will review and respond directly within 2 business hours.
+                  <p className="text-xs text-slate-600 mt-1 mb-6 font-medium">
+                    Fill out your required specifications. Click on either director to send your pre-composed message directly via WhatsApp.
                   </p>
 
-                  <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                  <div className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
                           Full Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -376,12 +393,13 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
-                          Company / Business Name
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
+                          Company / Business Name <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="text"
-                          placeholder="e.g. Acme Bag Converters Pvt Ltd (Optional)"
+                          required
+                          placeholder="e.g. Acme Bag Converters Pvt Ltd"
                           value={company}
                           onChange={(e) => {
                             setCompany(e.target.value);
@@ -417,10 +435,10 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <div className="flex items-center justify-between mb-1">
-                          <label className="block text-xs font-bold text-slate-700">
+                          <label className="block text-xs font-bold text-slate-800">
                             Mobile / WhatsApp No. <span className="text-red-500">*</span>
                           </label>
-                          <span className={`text-[10px] font-mono ${phone.length === 10 ? "text-emerald-600 font-bold" : "text-slate-400"}`}>
+                          <span className={`text-xs font-mono font-semibold ${phone.length === 10 ? "text-emerald-600 font-bold" : "text-slate-500"}`}>
                             {phone.length}/10 digits
                           </span>
                         </div>
@@ -429,7 +447,7 @@ export default function ContactPage() {
                             ? "border-red-400 bg-red-50/20"
                             : "border-slate-300"
                         }`}>
-                          <span className="inline-flex items-center px-3 text-xs font-bold text-slate-600 bg-slate-100/90 border-r border-slate-200 select-none">
+                          <span className="inline-flex items-center px-3 text-xs font-bold text-slate-700 bg-slate-100/90 border-r border-slate-200 select-none">
                             +91
                           </span>
                           <input
@@ -439,7 +457,6 @@ export default function ContactPage() {
                             placeholder="98250 12345"
                             value={phone}
                             onChange={(e) => {
-                              // Restrict input strictly to digits and max 10 digits
                               const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
                               setPhone(digitsOnly);
                               if (touched.phone) {
@@ -468,12 +485,13 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
-                          Email Address
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
+                          Email Address <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="email"
-                          placeholder="e.g. buyer@acme.com (Optional)"
+                          required
+                          placeholder="e.g. buyer@acme.com"
                           value={email}
                           onChange={(e) => {
                             setEmail(e.target.value);
@@ -508,41 +526,34 @@ export default function ContactPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
                           Target GSM <span className="text-red-500">*</span>
                         </label>
                         <select
                           value={gsm}
                           onChange={(e) => setGsm(e.target.value)}
-                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer"
+                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer font-medium"
                         >
-                          <option value="15">15 GSM (Agro Fleece / Mask inner)</option>
-                          <option value="25">25 GSM (3-Ply Surgical Mask / Gown)</option>
-                          <option value="35">35 GSM (Medical Bed Cover / Drape)</option>
-                          <option value="50">50 GSM (D-Cut Bags)</option>
-                          <option value="60">60 GSM (Standard Bags)</option>
-                          <option value="70">70 GSM (Supermarket Bags - Popular)</option>
-                          <option value="80">80 GSM (Heavy Bags / Mattress)</option>
-                          <option value="90">90 GSM (Mattress Pocket Springs)</option>
-                          <option value="100">100 GSM (Reinforced Packaging)</option>
-                          <option value="120">120 GSM (Luggage / Heavy Sacks)</option>
-                          <option value="150">150 GSM (Industrial Liners)</option>
-                          <option value="200">200 GSM (Maximum Density)</option>
+                          <option value="10-30">10-30</option>
+                          <option value="30-60">30-60</option>
+                          <option value="60-100">60-100</option>
+                          <option value="100-150">100-150</option>
+                          <option value="150-200">150-200</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
                           Fabric Color Shade <span className="text-red-500">*</span>
                         </label>
                         <select
                           value={color}
                           onChange={(e) => setColor(e.target.value)}
-                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer"
+                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer font-medium"
                         >
                           {fabricColors.map((c) => (
-                            <option key={c.id} value={c.name}>
-                              {c.name} ({c.fullName})
+                            <option key={c.id} value={c.fullName}>
+                              {c.fullName}
                             </option>
                           ))}
                         </select>
@@ -551,31 +562,31 @@ export default function ContactPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
                           Product Type
                         </label>
                         <select
                           value={productType}
                           onChange={(e) => setProductType(e.target.value)}
-                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer"
+                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer font-medium"
                         >
-                          <option value="PP Spunbond Standard Rolls">PP Spunbond Standard Rolls</option>
-                          <option value="Medical & Hygiene Rolls">Medical &amp; Hygiene Rolls</option>
+                          <option value="PP Spunbond Standard Fabric">PP Spunbond Standard Fabric</option>
+                          <option value="Medical & Hygiene Grade Fabric">Medical &amp; Hygiene Grade Fabric</option>
                           <option value="Agriculture UV Crop Protection">Agriculture UV Crop Protection</option>
-                          <option value="Packaging & Carry Bag Rolls">Packaging &amp; Carry Bag Rolls</option>
-                          <option value="Furniture & Mattress Springs">Furniture &amp; Mattress Springs</option>
-                          <option value="Hydrophilic Fast-Absorbing">Hydrophilic Fast-Absorbing</option>
+                          <option value="Nonwoven Fabric for Packaging & Bags">Nonwoven Fabric for Packaging &amp; Bags</option>
+                          <option value="Furniture & Mattress Springs Fabric">Furniture &amp; Mattress Springs Fabric</option>
+                          <option value="Hydrophilic Fast-Absorbing Fabric">Hydrophilic Fast-Absorbing Fabric</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
                           Order Quantity
                         </label>
                         <select
                           value={quantity}
                           onChange={(e) => setQuantity(e.target.value)}
-                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer"
+                          className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors cursor-pointer font-medium"
                         >
                           <option value="Sample Rolls (Test Order)">Sample Rolls (Test Order)</option>
                           <option value="500 kg - 1 Metric Ton">500 kg - 1 Metric Ton</option>
@@ -587,7 +598,7 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
                         Application Details / Custom Slitting Notes
                       </label>
                       <textarea
@@ -595,24 +606,43 @@ export default function ContactPage() {
                         placeholder="e.g. Required roll slit width, delivery destination, sample requests..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors resize-none"
+                        className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors resize-none font-medium"
                       />
                     </div>
 
-                    <div className="pt-2">
-                      <button
-                        type="submit"
-                        className="w-full py-3.5 px-6 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center space-x-2 transition-all cursor-pointer"
-                      >
-                        <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
-                        <span>Send Factory Inquiry via WhatsApp</span>
-                      </button>
-                      <p className="text-[11px] text-slate-500 text-center mt-2 flex items-center justify-center gap-1.5">
+                    {/* Dual WhatsApp Buttons for Both Directors */}
+                    <div className="pt-3 space-y-2.5">
+                      <div className="text-xs font-bold text-slate-900 flex items-center justify-between">
+                        <span>Send WhatsApp Inquiry to:</span>
+                        <span className="text-xs text-slate-700 font-semibold">Choose either director below</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => handleSendInquiry("919925195928", "Nirav Patel")}
+                          className="w-full py-3.5 px-4 rounded-xl font-bold text-xs text-white bg-[#25D366] hover:bg-[#20ba5a] shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                        >
+                          <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
+                          <span>Send to Nirav Patel (99251 95928)</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handleSendInquiry("919925195930", "Prakash Patel")}
+                          className="w-full py-3.5 px-4 rounded-xl font-bold text-xs text-white bg-[#25D366] hover:bg-[#20ba5a] shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                        >
+                          <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
+                          <span>Send to Prakash Patel (99251 95930)</span>
+                        </button>
+                      </div>
+
+                      <p className="text-xs text-slate-800 text-center mt-2 flex items-center justify-center gap-1.5 font-semibold">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-                        <span>Clicking validates your entries &amp; opens WhatsApp with your pre-written inquiry. Just tap Enter!</span>
+                        <span>Clicking validates your entries and opens WhatsApp with your pre-written inquiry. Just tap Send!</span>
                       </p>
                     </div>
-                  </form>
+                  </div>
                 </div>
               ) : (
                 <div className="py-6 text-center space-y-5">
@@ -621,53 +651,56 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold uppercase tracking-wider mb-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">
                       <WhatsAppIcon className="w-3 h-3 text-[#25D366]" />
                       <span>WhatsApp Opened</span>
                     </span>
                     <h3 className="text-2xl font-black text-slate-950">Inquiry Generated &amp; Ready!</h3>
-                    <p className="text-xs text-slate-600 max-w-md mx-auto mt-2 leading-relaxed">
-                      Thank you, <span className="font-bold text-slate-900">{fullName}</span>. 
-                      WhatsApp has opened in a new tab with your inquiry details pre-written. 
-                      Simply tap <strong>Enter</strong> in WhatsApp to send your message directly to Director Nirav Patel.
+                    <p className="text-xs text-slate-700 max-w-md mx-auto mt-2 leading-relaxed font-medium">
+                      Thank you, <span className="font-bold text-slate-900">{fullName}</span> ({company}). 
+                      WhatsApp has opened in a new tab addressed to <span className="font-bold text-slate-900">{selectedDirector}</span>. 
+                      Simply tap <strong>Send</strong> in WhatsApp.
                     </p>
                   </div>
 
-                  {/* Order Specs Summary (No raw message text) */}
+                  {/* Order Specs Summary */}
                   <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2 max-w-md mx-auto">
-                    <div className="flex justify-between text-slate-500">
+                    <div className="flex justify-between text-slate-600">
                       <span>Product:</span> <span className="text-slate-900 font-bold">{productType}</span>
                     </div>
-                    <div className="flex justify-between text-slate-500">
+                    <div className="flex justify-between text-slate-600">
                       <span>Specifications:</span> <span className="text-slate-900 font-bold">{gsm} GSM • {color}</span>
                     </div>
-                    <div className="flex justify-between text-slate-500">
+                    <div className="flex justify-between text-slate-600">
+                      <span>Company &amp; Email:</span> <span className="text-slate-900 font-bold">{company} ({email})</span>
+                    </div>
+                    <div className="flex justify-between text-slate-600">
                       <span>Order Quantity:</span> <span className="text-slate-900 font-bold">{quantity}</span>
                     </div>
                   </div>
 
                   <div className="space-y-2 max-w-md mx-auto">
-                    <p className="text-xs text-slate-600 font-semibold">
-                      If WhatsApp didn&apos;t open automatically, click a button below to launch:
+                    <p className="text-xs text-slate-700 font-bold">
+                      Direct WhatsApp Links for both owners:
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <a
-                        href={`https://api.whatsapp.com/send?phone=919925195928&text=${encodeURIComponent(generateCombinedMessage())}`}
+                        href={`https://wa.me/919925195928?text=${encodeURIComponent(generateCombinedMessage("Nirav Patel"))}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm cursor-pointer"
                       >
                         <WhatsAppIcon className="w-4 h-4 text-white" />
-                        <span>Nirav Patel (+91 99251 95928)</span>
+                        <span>Nirav Patel (99251 95928)</span>
                       </a>
                       <a
-                        href={`https://api.whatsapp.com/send?phone=919925195930&text=${encodeURIComponent(generateCombinedMessage())}`}
+                        href={`https://wa.me/919925195930?text=${encodeURIComponent(generateCombinedMessage("Prakash Patel"))}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm cursor-pointer"
+                        className="p-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm cursor-pointer"
                       >
-                        <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
-                        <span>Prakash Patel (+91 99251 95930)</span>
+                        <WhatsAppIcon className="w-4 h-4 text-white" />
+                        <span>Prakash Patel (99251 95930)</span>
                       </a>
                     </div>
                   </div>
@@ -679,7 +712,7 @@ export default function ContactPage() {
                         setErrors({});
                         setTouched({});
                       }}
-                      className="px-6 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                      className="px-6 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors cursor-pointer"
                     >
                       Submit Another Inquiry
                     </button>
@@ -725,7 +758,7 @@ export default function ContactPage() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                  <div className="px-5 pb-5 text-xs text-slate-700 leading-relaxed border-t border-slate-100 pt-3 font-medium">
                     {faq.answer}
                   </div>
                 )}

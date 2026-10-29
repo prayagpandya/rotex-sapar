@@ -21,11 +21,14 @@ export function AnimatedCounter({
   className = "",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [displayValue, setDisplayValue] = useState(0);
+  const isInView = useInView(ref, { once: true, margin: "0px" });
+  const [displayValue, setDisplayValue] = useState(value);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimatedRef.current) return;
+    hasAnimatedRef.current = true;
+    setDisplayValue(0);
 
     let startTimestamp: number | null = null;
     let animationFrameId: number;

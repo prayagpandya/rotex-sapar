@@ -39,7 +39,7 @@ export default function ApplicationsPage() {
 
           return (
             <AnimatedSection key={app.id} variant="fadeUp">
-              <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-md overflow-hidden">
+              <div id={app.id} className="scroll-mt-24 rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-md overflow-hidden">
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${isReversed ? "lg:flex-row-reverse" : ""}`}>
                   
                   {/* Image Column */}
@@ -67,7 +67,7 @@ export default function ApplicationsPage() {
                       <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
                         {app.name}
                       </h2>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-700 mt-2.5 leading-relaxed font-medium">
                         {app.fullDesc}
                       </p>
                     </div>
@@ -77,7 +77,7 @@ export default function ApplicationsPage() {
                       <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
                         Key Performance Characteristics:
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-800 font-medium">
                         {app.keyBenefits.map((b, i) => (
                           <div key={i} className="flex items-start space-x-2">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
@@ -96,7 +96,7 @@ export default function ApplicationsPage() {
                         {app.itemsProduced.map((item, i) => (
                           <span
                             key={i}
-                            className="px-2.5 py-1 rounded-lg bg-slate-50 text-xs text-slate-700 border border-slate-200"
+                            className="px-2.5 py-1 rounded-lg bg-slate-50 text-xs text-slate-800 font-semibold border border-slate-200"
                           >
                             {item}
                           </span>
@@ -106,7 +106,7 @@ export default function ApplicationsPage() {
 
                     {/* Recommended Colors & Inquire */}
                     <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-                      <div className="flex items-center space-x-2 text-xs text-slate-600">
+                      <div className="flex items-center space-x-2 text-xs text-slate-700 font-medium">
                         <Palette className="w-4 h-4 text-sky-600" />
                         <span>Recommended Colors:</span>
                         <span className="font-bold text-slate-900">

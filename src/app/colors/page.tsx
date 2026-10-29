@@ -8,7 +8,6 @@ import { fabricColors } from "@/data/colors";
 import { companyData } from "@/data/company";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ColorSwatchViewer } from "@/components/ColorSwatchViewer";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export default function ColorsPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -37,10 +36,10 @@ export default function ColorsPage() {
           <span>Official Color Catalog</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-          21+ Non-woven Fabric Color Rolls
+          21+ Nonwoven Fabric Color Rolls
         </h1>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Extruded using high-purity virgin polymer non-woven fabric formulations. 
+          Extruded using high-purity virgin polymer nonwoven fabric formulations. 
           Enjoy flawless color uniformity, zero dye migration, high lightfastness, and skin-safe non-toxic pigments 
           across all 10 to 200 GSM specifications.
         </p>
@@ -59,7 +58,7 @@ export default function ColorsPage() {
               <SunMedium className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">UV &amp; Lightfast Stability</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
               Formulated with high-grade optical pigments that resist photodegradation and fading even when exposed to outdoor sunlight and weather.
             </p>
           </div>
@@ -69,7 +68,7 @@ export default function ColorsPage() {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Skin-Safe &amp; Non-Toxic</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
               Certified free from heavy metals, formaldehyde, and phthalates. Compliant with medical surgical wear and food-packaging requirements.
             </p>
           </div>
@@ -79,8 +78,8 @@ export default function ColorsPage() {
               <Layers className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Consistent Batch-to-Batch</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Automated gravimetric non-woven fabric dosers maintain tight chromatic tolerance (Delta E &lt; 1.0) across high-volume production cycles.
+            <p className="text-xs text-slate-800 font-medium leading-relaxed">
+              Automated gravimetric nonwoven fabric dosers maintain tight chromatic tolerance (Delta E &lt; 1.0) across high-volume production cycles.
             </p>
           </div>
         </div>
@@ -91,7 +90,7 @@ export default function ColorsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <h2 className="text-2xl font-black text-slate-900">Full Color Range Directory</h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-sm text-slate-700 mt-0.5 font-medium">
               Available across 10 - 200 GSM in 1.6m width rolls.
             </p>
           </div>
@@ -125,18 +124,11 @@ export default function ColorsPage() {
                   style={{ backgroundColor: c.hex }}
                 >
                   <span
-                    className={`font-black text-base uppercase tracking-wider drop-shadow ${
+                    className={`font-black text-xs sm:text-sm uppercase tracking-wider text-center px-2 drop-shadow leading-tight ${
                       c.textColor === "light" ? "text-white" : "text-slate-950"
                     }`}
                   >
                     {c.name}
-                  </span>
-                  <span
-                    className={`absolute bottom-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded ${
-                      c.textColor === "light" ? "bg-black/40 text-white" : "bg-white/70 text-black"
-                    }`}
-                  >
-                    {c.code}
                   </span>
                 </div>
 
@@ -144,9 +136,8 @@ export default function ColorsPage() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-bold text-slate-900">{c.fullName}</h3>
-                    <span className="text-[10px] text-sky-700 font-bold">{c.recommendedGsm}</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-slate-700 leading-relaxed line-clamp-2">
                     {c.description}
                   </p>
                 </div>
@@ -167,43 +158,7 @@ export default function ColorsPage() {
         </div>
       </div>
 
-      {/* Custom Pantone Shade Matching Banner */}
-      <AnimatedSection variant="scaleUp">
-        <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-md relative overflow-hidden">
-          <div className="space-y-3 text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-sky-700">
-              Custom Shade Matching Lab
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900">
-              Need a Custom Pantone or Corporate Color Shade?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
-              Send us your physical fabric swatch or Pantone TCX/PMS code. Our non-woven fabric laboratory 
-              formulates rapid laboratory sample swatches within 48 to 72 hours for order approval.
-            </p>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-sky-600 to-red-600 hover:from-sky-500 hover:to-red-500 shadow-md text-center"
-            >
-              Contact Color Lab
-            </Link>
-            <a
-              href={`https://wa.me/${companyData.directors[0].whatsappNumber}?text=${encodeURIComponent(
-                "Hello Nirav Patel, I want to inquire about custom color shade matching and sample book dispatch."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 rounded-xl font-bold text-xs text-white bg-[#25D366] hover:bg-[#20ba5a] shadow-xs flex items-center justify-center space-x-2 transition-colors"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>WhatsApp for Swatch Book</span>
-            </a>
-          </div>
-        </div>
-      </AnimatedSection>
 
     </div>
   );

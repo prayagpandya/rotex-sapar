@@ -27,8 +27,8 @@ export function FloatingWhatsApp() {
                   <WhatsAppIcon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">Direct WhatsApp Connect</h4>
-                  <p className="text-[10px] text-emerald-700 font-semibold">Rotex Factory Directors Online</p>
+                  <h4 className="text-xs font-bold text-slate-900">Send Factory Inquiry on WhatsApp</h4>
+                  <p className="text-xs text-emerald-800 font-bold">Direct Connect with Company Directors</p>
                 </div>
               </div>
               <button
@@ -58,10 +58,10 @@ export function FloatingWhatsApp() {
                       <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
                         {director.name}
                       </div>
-                      <div className="text-[10px] text-slate-500 font-medium">
-                        {director.role.split(" - ")[1] || "Director"}
+                      <div className="text-xs text-slate-700 font-bold">
+                        {director.role}
                       </div>
-                      <div className="text-[11px] text-emerald-700 font-bold">
+                      <div className="text-xs text-emerald-800 font-bold">
                         +91 {director.whatsappNumber.slice(2)}
                       </div>
                     </div>
@@ -72,7 +72,7 @@ export function FloatingWhatsApp() {
             </div>
 
             <div className="mt-3 pt-2 border-t border-slate-100 text-center">
-              <span className="text-[10px] text-slate-500">
+              <span className="text-xs text-slate-700 font-semibold">
                 Typically replies in minutes for bulk roll rates
               </span>
             </div>

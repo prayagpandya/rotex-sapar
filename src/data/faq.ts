@@ -76,7 +76,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How many standard colors are available in stock?",
-    answer: "We offer 21 standard factory non-woven fabric colors including White, Black, Beige, Ivory, Brown, P.Blue, R.Blue, L.Yellow, Violet, S.Green, Orange, R.Green, Maroon, Red, P.Green, Pink, N.Blue, G.Yellow, B.Ivory, B.Green, and L.Maroon. Custom color shade matching against Pantone or client swatch samples is also available for bulk orders.",
+    answer: "We offer 21 standard factory nonwoven fabric colors including White, Black, Beige, Ivory, Bright Ivory, Brown, Peacock Blue, Royal Blue, Lemon Yellow, Violet, Sea Green, Orange, Reliance Green, Maroon, Light Maroon, Red, Perrot Green, Pink, Nevy Blue, Golden Yellow, and Bottle Green. Custom color shade matching against Pantone or client swatch samples is also available for bulk orders.",
     category: "Colors & Customization"
   },
   {

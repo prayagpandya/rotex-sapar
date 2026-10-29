@@ -46,7 +46,7 @@ export default function AboutPage() {
     {
       icon: Layers,
       color: "emerald",
-      title: "21+ Vibrant Non-woven Fabric Shades",
+      title: "21+ Vibrant Nonwoven Fabric Shades",
       desc: "Immediate ready-stock availability across 21 standard commercial colors. Formulated with azo-free, heavy-metal-free pigments and optional UV stabilization for outdoor agricultural applications."
     },
     {
@@ -58,7 +58,7 @@ export default function AboutPage() {
     {
       icon: Microscope,
       color: "red",
-      title: "In-House ASTM & ISO Quality Lab",
+      title: "In-House ASTM & Precision Quality Lab",
       desc: "Every master roll is batch-tested for GSM uniformity, tensile burst, elongation, hydrostatic head (liquid barrier), and air permeability before receiving an internal factory dispatch clearance certificate."
     },
     {
@@ -73,7 +73,7 @@ export default function AboutPage() {
     {
       step: "01",
       title: "Prime Polymer Dosing & Extrusion",
-      desc: "Virgin polypropylene granules and certified color non-woven fabric formulations are gravimetrically dosed and melted under precise thermal zones into a homogenous polymer melt."
+      desc: "Virgin polypropylene granules and certified color nonwoven fabric formulations are gravimetrically dosed and melted under precise thermal zones into a homogenous polymer melt."
     },
     {
       step: "02",
@@ -137,7 +137,7 @@ export default function AboutPage() {
               <AnimatedCounter value={18000} suffix="+" duration={2.2} />
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">Metric Tons</span>
-            <span className="text-[10px] text-slate-500">Annual Extrusion</span>
+            <span className="text-xs text-slate-700 font-semibold">Annual Extrusion</span>
           </div>
 
           <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -145,7 +145,7 @@ export default function AboutPage() {
               <AnimatedCounter value={10} duration={1.6} />–<AnimatedCounter value={200} duration={2.0} />
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">GSM Range</span>
-            <span className="text-[10px] text-slate-500">Fabric Weight Spectrum</span>
+            <span className="text-xs text-slate-700 font-semibold">Fabric Weight Spectrum</span>
           </div>
 
           <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -153,7 +153,7 @@ export default function AboutPage() {
               1.60m
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">Master Width</span>
-            <span className="text-[10px] text-slate-500">Custom Slit to 50mm</span>
+            <span className="text-xs text-slate-700 font-semibold">Custom Slit to 50mm</span>
           </div>
 
           <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -161,7 +161,7 @@ export default function AboutPage() {
               <AnimatedCounter value={21} suffix="+" duration={1.6} />
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">Color Shades</span>
-            <span className="text-[10px] text-slate-500">Non-woven Fabric Ready Stock</span>
+            <span className="text-xs text-slate-700 font-semibold">Nonwoven Fabric Ready Stock</span>
           </div>
 
           <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -169,7 +169,7 @@ export default function AboutPage() {
               <AnimatedCounter value={100} suffix="%" duration={1.8} />
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">Virgin PP</span>
-            <span className="text-[10px] text-slate-500">Zero Chalk Adulteration</span>
+            <span className="text-xs text-slate-700 font-semibold">Zero Chalk Adulteration</span>
           </div>
 
           <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
@@ -177,7 +177,7 @@ export default function AboutPage() {
               <AnimatedCounter value={450} suffix="+" duration={1.8} />
             </span>
             <span className="text-xs font-bold text-slate-800 mt-1 block">B2B Partners</span>
-            <span className="text-[10px] text-slate-500">Domestic &amp; Export</span>
+            <span className="text-xs text-slate-700 font-semibold">Domestic &amp; Export</span>
           </div>
         </div>
       </AnimatedSection>
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 high-tensile polypropylene spunbond rolls that run smoothly without tears or dust.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                While much of the market relies on calcium carbonate filler non-woven fabric additives to lower costs at the expense 
+                While much of the market relies on calcium carbonate filler nonwoven fabric additives to lower costs at the expense 
                 of strength, Rotex adheres uncompromisingly to <strong className="text-slate-900 font-bold">100% prime virgin polymer</strong>. 
                 Our multi-beam continuous filament spunbond lines generate uniform fiber distribution, high burst strength, 
                 and superior ultrasonic weldability across every meter.
@@ -213,7 +213,7 @@ export default function AboutPage() {
                 </div>
                 <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Calibrated ASTM &amp; ISO in-house quality testing protocol for every batch</span>
+                  <span>Calibrated ASTM &amp; internal laboratory quality testing protocol for every batch</span>
                 </div>
                 <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -233,7 +233,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 p-3 rounded-xl bg-white/95 text-xs text-slate-900 font-bold shadow-md border border-slate-200">
                 <span>1.60m Master Production Width</span>
-                <span className="text-[10px] text-slate-500 block font-normal">Ready Stock &amp; Custom Slitting Available</span>
+                <span className="text-xs text-slate-700 block font-medium">Ready Stock &amp; Custom Slitting Available</span>
               </div>
             </div>
 
@@ -270,7 +270,7 @@ export default function AboutPage() {
                     <h3 className="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-slate-800 leading-relaxed font-medium">
                       {pillar.desc}
                     </p>
                   </div>
@@ -311,7 +311,7 @@ export default function AboutPage() {
                   <h4 className="text-base font-bold text-slate-900">
                     {step.title}
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-800 leading-relaxed font-medium">
                     {step.desc}
                   </p>
                 </div>
@@ -328,15 +328,15 @@ export default function AboutPage() {
             Executive Leadership
           </span>
           <h2 className="text-3xl font-black text-slate-900">Meet the Directors of Rotex</h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-2">
+          <p className="text-sm text-slate-800 mt-2 font-medium">
             Direct leadership accountability. Contact our directors directly for commercial contracts, 
             exclusive distributor territories, and custom technical inquiries.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
           {companyData.directors.map((director, idx) => (
-            <AnimatedSection key={director.name} variant="fadeUp" delay={idx * 0.15}>
+            <AnimatedSection key={director.name} variant="fadeUp" delay={idx * 0.15} className="h-full">
               <div className="rounded-3xl bg-white border border-slate-200 p-8 flex flex-col justify-between space-y-6 shadow-md h-full">
                 
                 <div className="space-y-4">
@@ -347,26 +347,26 @@ export default function AboutPage() {
                     <div>
                       <h3 className="text-xl font-black text-slate-900">{director.name}</h3>
                       <p className="text-xs font-bold text-sky-700">{director.role}</p>
-                      <p className="text-[11px] text-slate-500">Rotex Nonwoven Fabrics</p>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5">Rotex Fabric Pvt. Ltd.</p>
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-sm text-slate-800 leading-relaxed font-medium">
                     {director.bio}
                   </p>
                 </div>
 
                 <div className="space-y-3 pt-4 border-t border-slate-100">
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-500 font-medium">Direct Phone:</span>
-                      <a href={`tel:${director.phone}`} className="font-bold text-slate-900 hover:text-sky-700">
+                      <span className="text-slate-700 font-bold">Direct Phone:</span>
+                      <a href={`tel:${director.phone}`} className="font-bold text-slate-950 hover:text-sky-700">
                         {director.displayPhone}
                       </a>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-500 font-medium">Email:</span>
-                      <a href={`mailto:${companyData.email}`} className="font-semibold text-sky-700 hover:underline">
+                      <span className="text-slate-700 font-bold">Email:</span>
+                      <a href={`mailto:${companyData.email}`} className="font-bold text-sky-700 hover:underline">
                         {companyData.email}
                       </a>
                     </div>
@@ -375,7 +375,7 @@ export default function AboutPage() {
                   <div className="grid grid-cols-2 gap-2.5">
                     <a
                       href={`tel:${director.phone}`}
-                      className="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors border border-slate-300"
+                      className="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors border border-slate-300"
                     >
                       <Phone className="w-3.5 h-3.5 text-sky-600" />
                       <span>Direct Call</span>
@@ -406,7 +406,7 @@ export default function AboutPage() {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Polymer Integrity</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed font-medium">
               We never compromise on virgin raw materials. Every metric ton extruded meets strict MFI, density, and tensile benchmarks without chalky additives.
             </p>
           </div>
@@ -416,7 +416,7 @@ export default function AboutPage() {
               <Recycle className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Eco &amp; Recyclability</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed font-medium">
               Polypropylene is 100% recyclable (#5). Our nonwoven solutions replace single-use plastic bags and reduce agricultural pesticide use via protective fleece.
             </p>
           </div>
@@ -426,7 +426,7 @@ export default function AboutPage() {
               <Users className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Transparent Partnership</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed font-medium">
               Direct access to our factory directors means immediate pricing decisions, flexible credit terms for verified partners, and dependable scheduled shipments.
             </p>
           </div>
@@ -475,41 +475,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 9. Bottom High-Impact CTA */}
-      <AnimatedSection variant="scaleUp">
-        <div className="rounded-3xl bg-gradient-to-r from-sky-900 via-slate-900 to-indigo-950 p-8 sm:p-12 text-center max-w-4xl mx-auto space-y-5 shadow-xl text-white relative overflow-hidden">
-          <div className="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
-          <span className="px-3.5 py-1 rounded-full bg-white/10 text-sky-300 text-xs font-bold uppercase tracking-wider inline-block">
-            Direct Factory Partnership
-          </span>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white max-w-2xl mx-auto">
-            Ready to Partner with a Reliable Virgin Spunbond Extruder?
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-            Contact Directors Nirav Patel and Prakash Patel directly for spot roll availability, 
-            contract pricing, or sample swatch roll dispatch.
-          </p>
-          <div className="pt-2 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/contact"
-              className="px-7 py-3.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-sky-600 to-red-600 hover:from-sky-500 hover:to-red-500 shadow-md transition-all"
-            >
-              Contact Sales Desk
-            </Link>
-            <a
-              href={`https://wa.me/${companyData.directors[0].whatsappNumber}?text=${encodeURIComponent(
-                "Hello Nirav Patel, I reviewed the Rotex About page and would like to inquire about bulk nonwoven roll supply."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl font-bold text-xs text-white bg-[#25D366] hover:bg-[#20ba5a] shadow-md flex items-center space-x-2 transition-all"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>WhatsApp Director</span>
-            </a>
-          </div>
-        </div>
-      </AnimatedSection>
+
 
     </div>
   );

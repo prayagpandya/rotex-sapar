@@ -17,7 +17,7 @@ export function QuoteModal() {
   const [email, setEmail] = useState("");
   const [productType, setProductType] = useState("PP Spunbond Standard Rolls");
   const [gsm, setGsm] = useState("70");
-  const [color, setColor] = useState("WHITE");
+  const [color, setColor] = useState("White");
   const [quantity, setQuantity] = useState("1000 kg (1 Metric Ton)");
   const [message, setMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -104,7 +104,7 @@ export function QuoteModal() {
               <h3 className="text-xl sm:text-2xl font-black text-slate-950">
                 Request Nonwoven Roll Quotation
               </h3>
-              <p className="text-xs text-slate-500 mt-1 mb-5">
+              <p className="text-sm text-slate-700 mt-1 mb-5 font-medium">
                 Direct factory pricing for PP Spunbond rolls from Rotex Nonwoven. 10 - 200 GSM, 21+ colors.
               </p>
 
@@ -129,12 +129,12 @@ export function QuoteModal() {
                       <label className="block text-xs font-bold text-slate-700">
                         WhatsApp / Mobile No. <span className="text-red-500">*</span>
                       </label>
-                      <span className={`text-[10px] font-mono ${phone.length === 10 ? "text-emerald-600 font-bold" : "text-slate-400"}`}>
+                      <span className={`text-xs font-mono font-semibold ${phone.length === 10 ? "text-emerald-600 font-bold" : "text-slate-400"}`}>
                         {phone.length}/10 digits
                       </span>
                     </div>
                     <div className="flex rounded-lg border border-slate-300 bg-slate-50 overflow-hidden focus-within:bg-white focus-within:border-sky-500 transition-colors">
-                      <span className="inline-flex items-center px-2.5 text-xs font-bold text-slate-600 bg-slate-100/90 border-r border-slate-200 select-none">
+                      <span className="inline-flex items-center px-2.5 text-xs font-bold text-slate-800 bg-slate-100/90 border-r border-slate-200 select-none">
                         +91
                       </span>
                       <input
@@ -168,43 +168,36 @@ export function QuoteModal() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
                       Target GSM Range *
                     </label>
                     <select
                       value={gsm}
                       onChange={(e) => setGsm(e.target.value)}
-                      className="w-full px-3 py-2 text-sm rounded-lg bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-3 py-2 text-sm rounded-lg bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors font-medium"
                     >
-                      <option value="15">15 GSM (Medical / Agrofleece)</option>
-                      <option value="25">25 GSM (3-Ply Masks / Gowns)</option>
-                      <option value="35">35 GSM (Medical Drapes)</option>
-                      <option value="50">50 GSM (D-Cut Bags)</option>
-                      <option value="60">60 GSM (Standard Bags)</option>
-                      <option value="70">70 GSM (Shopping Bags - Most Popular)</option>
-                      <option value="80">80 GSM (Heavy Bags / Mattress)</option>
-                      <option value="90">90 GSM (Mattress Pocket Springs)</option>
-                      <option value="100">100 GSM (Heavy Duty Packaging)</option>
-                      <option value="120">120 GSM (Premium Bags)</option>
-                      <option value="150">150 GSM (Industrial Liners)</option>
-                      <option value="200">200 GSM (High Tensile Heavy Duty)</option>
+                      <option value="10-30">10-30</option>
+                      <option value="30-60">30-60</option>
+                      <option value="60-100">60-100</option>
+                      <option value="100-150">100-150</option>
+                      <option value="150-200">150-200</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
                       Preferred Color Shade *
                     </label>
                     <select
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
-                      className="w-full px-3 py-2 text-sm rounded-lg bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-3 py-2 text-sm rounded-lg bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-sky-500 focus:bg-white transition-colors font-medium"
                     >
                       {fabricColors.map((c) => (
-                        <option key={c.id} value={c.name}>
-                          {c.name} ({c.fullName})
+                        <option key={c.id} value={c.fullName}>
+                          {c.fullName}
                         </option>
                       ))}
                     </select>
@@ -264,29 +257,29 @@ export function QuoteModal() {
 
               <div>
                 <h3 className="text-2xl font-black text-slate-950">Quotation Request Received!</h3>
-                <p className="text-xs text-slate-600 max-w-md mx-auto mt-2">
+                <p className="text-xs text-slate-800 max-w-md mx-auto mt-2 font-medium">
                   Thank you, <span className="font-bold text-sky-700">{fullName || "Valued Customer"}</span>. 
                   Our sales and engineering desk will review your {gsm} GSM {color} requirement immediately.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-1.5 max-w-md mx-auto">
-                <div className="flex justify-between text-slate-600">
+                <div className="flex justify-between text-slate-800 font-medium">
                   <span>Product:</span> <span className="text-slate-900 font-bold">{productType}</span>
                 </div>
-                <div className="flex justify-between text-slate-600">
+                <div className="flex justify-between text-slate-800 font-medium">
                   <span>GSM &amp; Color:</span> <span className="text-slate-900 font-bold">{gsm} GSM • {color}</span>
                 </div>
-                <div className="flex justify-between text-slate-600">
+                <div className="flex justify-between text-slate-800 font-medium">
                   <span>Quantity:</span> <span className="text-slate-900 font-bold">{quantity}</span>
                 </div>
-                <div className="flex justify-between text-slate-600">
+                <div className="flex justify-between text-slate-800 font-medium">
                   <span>Official Email:</span> <span className="text-sky-700 font-bold">{companyData.email}</span>
                 </div>
               </div>
 
               <div className="space-y-2 max-w-md mx-auto">
-                <p className="text-xs text-slate-600 font-semibold">
+                <p className="text-xs text-slate-900 font-bold">
                   Send this inquiry directly to our Directors via WhatsApp for instant pricing:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

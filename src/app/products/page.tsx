@@ -42,7 +42,7 @@ export default function ProductsPage() {
           <span>Product Range &amp; Catalog</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-          PP Spunbond Nonwoven Fabric Rolls
+          PP Spunbond Nonwoven Fabric
         </h1>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
           100% Virgin Polypropylene rolls manufactured on continuous filament spunbond extrusion lines. 
@@ -109,13 +109,13 @@ export default function ProductsPage() {
                   <h2 className="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                     {product.name}
                   </h2>
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-slate-800 font-medium leading-relaxed line-clamp-3">
                     {product.description}
                   </p>
                 </div>
 
                 {/* Key features bullets */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-100 text-xs text-slate-600">
+                <div className="space-y-1.5 pt-2 border-t border-slate-100 text-xs text-slate-800 font-medium">
                   {product.keyFeatures.slice(0, 3).map((feat, fIdx) => (
                     <div key={fIdx} className="flex items-start space-x-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
@@ -150,7 +150,7 @@ export default function ProductsPage() {
         <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-xl sm:text-2xl font-black text-slate-900">
-              Need Custom GSM, Roll Slitting, or Specific Non-woven Fabric?
+              Need Custom GSM, Roll Slitting, or Specific Nonwoven Fabric?
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
               Our factory engineers can slit master rolls down to any required width (from 100mm to 1600mm) 

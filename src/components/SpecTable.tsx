@@ -63,7 +63,7 @@ export function SpecTable() {
 
         {/* Search Bar */}
         <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600" />
           <input
             type="text"
             placeholder="Search GSM or application..."
@@ -106,8 +106,8 @@ export function SpecTable() {
                   <ArrowUpDown className="w-3 h-3" />
                 </div>
               </th>
-              <th className="px-4 py-3">Roll Width</th>
-              <th className="px-4 py-3">Length</th>
+              <th className="px-4 py-3">Roll Width (Meter)</th>
+              <th className="px-4 py-3">Length (Meter)</th>
               <th
                 onClick={() => toggleSort("approxNetWeightKg")}
                 className="px-4 py-3 cursor-pointer hover:text-sky-700 transition-colors"
@@ -127,7 +127,7 @@ export function SpecTable() {
                 key={spec.srNo}
                 className="hover:bg-slate-50 transition-colors group"
               >
-                <td className="px-4 py-3 text-center text-slate-400 font-mono">
+                <td className="px-4 py-3 text-center text-slate-700 font-mono font-medium">
                   {spec.srNo}
                 </td>
                 <td className="px-4 py-3 font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
@@ -150,7 +150,7 @@ export function SpecTable() {
                 <td className="px-4 py-3 text-right">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-slate-100 hover:bg-sky-600 text-slate-700 hover:text-white transition-all shadow-xs"
+                    className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 hover:bg-sky-600 text-slate-900 hover:text-white transition-all shadow-xs"
                   >
                     <span>Inquire</span>
                     <ArrowRight className="w-3 h-3" />
@@ -162,7 +162,7 @@ export function SpecTable() {
         </table>
       </div>
 
-      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2 font-medium">
+      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-800 gap-2 font-semibold">
         <span>Showing {filteredSpecs.length} of {fabricRollSpecs.length} standard configurations</span>
         <span>Custom slit widths (e.g. 100mm - 1600mm) available upon factory order</span>
       </div>
