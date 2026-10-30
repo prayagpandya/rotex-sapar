@@ -336,12 +336,12 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
           {companyData.directors.map((director, idx) => (
-            <AnimatedSection key={director.name} variant="fadeUp" delay={idx * 0.15} className="h-full">
-              <div className="rounded-3xl bg-white border border-slate-200 p-8 flex flex-col justify-between space-y-6 shadow-md h-full">
+            <AnimatedSection key={director.name} variant="fadeUp" delay={idx * 0.15} className="h-full flex flex-col">
+              <div className="rounded-3xl bg-white border border-slate-200 p-8 flex flex-col justify-between shadow-md h-full flex-1">
                 
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-600 via-blue-700 to-red-600 text-white font-black text-xl flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-600 via-blue-700 to-red-600 text-white font-black text-xl flex items-center justify-center shadow-md shrink-0">
                       {director.avatarText}
                     </div>
                     <div>
@@ -351,7 +351,7 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-slate-800 leading-relaxed font-medium">
+                  <p className="text-sm text-slate-800 leading-relaxed font-medium min-h-[4.5rem]">
                     {director.bio}
                   </p>
                 </div>

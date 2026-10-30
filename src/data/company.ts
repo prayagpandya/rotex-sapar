@@ -43,7 +43,9 @@ export const companyData = {
     pinCode: "360024",
     gstin: "24AAECR5787J1ZW",
     plant: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat.",
-    displayAddress: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat."
+    displayAddress: "Survey No.275/1/P, Plot No.22/23, Gujarat Alloy Cast Gate, Shapar Main Road, At :- Shapar (Veraval) 360024. Tal :- Kotda Sangani, Dist :- Rajkot.- Gujarat.",
+    googleMapsUrl: "https://maps.app.goo.gl/KcnPrddDdH4kSLgJ9",
+    googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.308722247781!2d70.7843186!3d22.159999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395835a1c2327d7f%3A0x8ef56b59767722ef!2sROTEX%20FABRIC%20PVT.%20LTD.!5e0!3m2!1sen!2sin!4v1730300000000!5m2!1sen!2sin"
   },
   directors: [
     {
@@ -66,7 +68,7 @@ export const companyData = {
       whatsappMessage: "Hello Prakash Patel,\n\nI am interested in Rotex PP Spunbond Nonwoven Fabric.\n\nPlease share the available GSM options, colours, pricing, and sample availability.\n\nThank you.",
       email: "rotexfab@yahoo.com",
       avatarText: "PP",
-      bio: "Overseeing executive management, national & export marketing, business growth, and quality-driven nonwoven extrusion operations."
+      bio: "Overseeing executive management, national & international marketing, business growth, and quality-driven nonwoven extrusion operations."
     }
   ] as DirectorContact[],
   stats: [

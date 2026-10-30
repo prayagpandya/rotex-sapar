@@ -19,6 +19,7 @@ import { fabricColors } from "@/data/colors";
 import { faqData } from "@/data/faq";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { GoogleMapSection } from "@/components/GoogleMapSection";
 
 // Regex validation rules
 const NAME_REGEX = /^[a-zA-Z\s.'-]{2,50}$/;
@@ -300,6 +301,15 @@ export default function ContactPage() {
                       <span><strong>Web:</strong> <a href="https://www.rotexfabric.com" target="_blank" rel="noopener noreferrer" className="text-sky-700 hover:underline">www.rotexfabric.com</a></span>
                       <span><strong>Email:</strong> <a href={`mailto:${companyData.email}`} className="text-sky-700 hover:underline">{companyData.email}</a></span>
                     </div>
+                    <a
+                      href="https://maps.app.goo.gl/KcnPrddDdH4kSLgJ9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2.5 py-2 px-3 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 text-xs font-bold flex items-center justify-center space-x-1.5 transition-colors border border-sky-200"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-sky-600" />
+                      <span>View on Google Maps</span>
+                    </a>
                   </div>
                 </div>
 
@@ -725,6 +735,9 @@ export default function ContactPage() {
         </div>
 
       </div>
+
+      {/* Factory Location & Google Map */}
+      <GoogleMapSection className="pt-8 sm:pt-12" />
 
       {/* Frequently Asked Questions Accordion */}
       <AnimatedSection variant="fadeUp" className="max-w-4xl mx-auto space-y-6 pt-8">

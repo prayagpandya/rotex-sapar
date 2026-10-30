@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.rotexfabric.com"),
   title: "Rotex Nonwoven Fabric | PP Spunbond Fabric Rolls (10 - 200 GSM)",
   description:
     "Leading manufacturer and exporter of PP Spunbond Nonwoven Fabric Rolls in 10 to 200 GSM with 21+ colors. Certified for medical masks, agro crop cover, eco carry bags, and furniture upholstery.",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "Rotex Nonwoven Fabric | PP Spunbond Fabric Rolls",
     description:
       "Precision PP Spunbond Nonwoven Fabric Rolls (10-200 GSM, 21 Colors). Direct factory pricing from directors Nirav Patel & Prakash Patel.",
-    url: "https://rotexfab.com",
+    url: "https://www.rotexfabric.com",
     siteName: "Rotex Nonwoven Fabric",
     locale: "en_US",
     type: "website",

@@ -27,6 +27,7 @@ import { AnimatedSection, staggerContainer, staggerItem } from "@/components/Ani
 import { ColorSwatchViewer } from "@/components/ColorSwatchViewer";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { GoogleMapSection } from "@/components/GoogleMapSection";
 
 export default function HomePage() {
   return (
@@ -556,12 +557,12 @@ export default function HomePage() {
               key={director.name}
               variant="fadeUp"
               delay={idx * 0.15}
-              className="h-full"
+              className="h-full flex flex-col"
             >
-              <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 hover:border-slate-300 transition-all duration-300 shadow-md flex flex-col justify-between space-y-6 h-full">
-                <div className="flex items-start justify-between gap-4">
+              <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 hover:border-slate-300 transition-all duration-300 shadow-md flex flex-col justify-between h-full flex-1">
+                <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-600 via-blue-700 to-red-600 text-white font-black text-xl flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-600 via-blue-700 to-red-600 text-white font-black text-xl flex items-center justify-center shadow-md shrink-0">
                       {director.avatarText}
                     </div>
                     <div>
@@ -570,50 +571,52 @@ export default function HomePage() {
                       <p className="text-xs font-semibold text-slate-700 mt-0.5">Rotex Fabric Pvt. Ltd.</p>
                     </div>
                   </div>
+
+                  <p className="text-sm text-slate-800 leading-relaxed font-medium min-h-[4.5rem]">
+                    {director.bio}
+                  </p>
                 </div>
 
-                <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                  {director.bio}
-                </p>
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700 font-bold">Mobile / WhatsApp:</span>
+                      <a
+                        href={`tel:${director.phone}`}
+                        className="text-slate-950 font-bold hover:text-sky-700 transition-colors"
+                      >
+                        {director.displayPhone}
+                      </a>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700 font-bold">Direct Email:</span>
+                      <a
+                        href={`mailto:${companyData.email}`}
+                        className="text-sky-700 font-bold hover:underline"
+                      >
+                        {companyData.email}
+                      </a>
+                    </div>
+                  </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-700 font-bold">Mobile / WhatsApp:</span>
+                  <div className="grid grid-cols-2 gap-3 pt-1">
                     <a
                       href={`tel:${director.phone}`}
-                      className="text-slate-950 font-bold hover:text-sky-700 transition-colors"
+                      className="py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors border border-slate-300"
                     >
-                      {director.displayPhone}
+                      <Phone className="w-3.5 h-3.5 text-sky-600" />
+                      <span>Call Direct</span>
                     </a>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-700 font-bold">Direct Email:</span>
                     <a
-                      href={`mailto:${companyData.email}`}
-                      className="text-sky-700 font-bold hover:underline"
+                      href={`https://wa.me/${director.whatsappNumber}?text=${encodeURIComponent(director.whatsappMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-sm"
                     >
-                      {companyData.email}
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                      <span>WhatsApp</span>
                     </a>
                   </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 pt-1">
-                  <a
-                    href={`tel:${director.phone}`}
-                    className="py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors border border-slate-300"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-sky-600" />
-                    <span>Call Direct</span>
-                  </a>
-                  <a
-                    href={`https://wa.me/${director.whatsappNumber}?text=${encodeURIComponent(director.whatsappMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-sm"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                    <span>WhatsApp</span>
-                  </a>
                 </div>
               </div>
             </AnimatedSection>
@@ -621,7 +624,8 @@ export default function HomePage() {
         </div>
       </section>
 
-
+      {/* 8. FACTORY LOCATION & GOOGLE MAP */}
+      <GoogleMapSection />
 
     </div>
   );
