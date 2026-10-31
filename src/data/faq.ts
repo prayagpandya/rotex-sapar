@@ -66,7 +66,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How do you calculate the net weight of a nonwoven fabric roll?",
-    answer: "The formula is: Net Weight (kg) = (GSM × Width in meters × Length in meters) ÷ 1000. For example, a 70 GSM roll of 1.6m width and 300m length weighs: (70 × 1.6 × 300) ÷ 1000 = 33.60 kg. You can use our interactive Roll Weight Calculator on this website for instant lookups.",
+    answer: "The formula is: Net Weight (kg) = (GSM × Width in meters × Length in meters) ÷ 1000. For example, a 70 GSM roll of 1.6m width and 300m length weighs: (70 × 1.6 × 300) ÷ 1000 = 33.60 kg.",
     category: "Technical"
   },
   {
